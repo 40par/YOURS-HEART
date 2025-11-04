@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YOURS HEART</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', Arial, sans-serif;
+    }
+
+    body {
+      background-color: #000;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    header {
+      margin-top: 40px;
+    }
+
+    header img {
+      width: 260px;
+      height: auto;
+      max-width: 80vw;
+    }
+
+    .description {
+      margin: 30px auto;
+      max-width: 800px;
+      font-size: 16px;
+      line-height: 1.5;
+      color: #ccc;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      width: 100%;
+      max-width: 1000px;
+      margin-top: 30px;
+    }
+
+    .product {
+      background-color: #111;
+      border: 1px solid #222;
+      border-radius: 12px;
+      padding: 20px;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+      border-color: #555;
+    }
+
+    .product img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .product h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .product p {
+      font-size: 14px;
+      color: #bbb;
+    }
+
+    footer {
+      margin-top: 50px;
+      font-size: 14px;
+      color: #888;
+    }
+
+    footer a {
+      color: #ccc;
+      text-decoration: none;
+      border-bottom: 1px solid #333;
+    }
+
+    footer a:hover {
+      color: #fff;
+      border-color: #fff;
+    }
+
+    @media (max-width: 600px) {
+      .description {
+        font-size: 14px;
+      }
+      .product h3 {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="YOURS HEART логотип">
+  </header>
+
+  <div class="description">
+    Простая возможность получить доступ к очкам и другим аксессуарам Chrome Hearts.  
+    <br><br>
+    <b>YOURS HEART</b> — это площадка, объединяющая эстетику и редкость. Здесь представлены разные предметы Chrome Hearts, прошедшие проверку и сохранённые в идеальном состоянии не отличимом от дорогих моделей.  
+    Наша миссия — сделать культовый дизайн ближе тем, кто ценит индивидуальность, качество и своё время.
+  </div>
+
+  <section class="products">
+    <div class="product">
+      <img src="https://via.placeholder.com/300x200?text=Chrome+Hearts+Eyewear+1" alt="Очки Chrome Hearts 1">
+      <h3>Chrome Hearts Eyewear 1</h3>
+      <p>Классическая модель с фирменным крестом и оправой из титана.</p>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/300x200?text=Chrome+Hearts+Eyewear+2" alt="Очки Chrome Hearts 2">
+      <h3>Chrome Hearts Eyewear 2</h3>
+      <p>Редкий вариант с гравировкой и ручной отделкой серебром.</p>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/300x200?text=Chrome+Hearts+Accessory" alt="Аксессуар Chrome Hearts">
+      <h3>Chrome Hearts Accessory</h3>
+      <p>Эксклюзивная подвеска в оригинальном стиле Chrome Hearts.</p>
+    </div>
+  </section>
+
+  <footer>
+    <br>
+    <a href="https://t.me/YOURS_HEART_SHOP" target="_blank">Telegram</a>
+    <br><br>
+    © 2025 YOURS HEART. Все права защищены.
+  </footer>
+</body>
+</html>
