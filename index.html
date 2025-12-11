@@ -1,150 +1,450 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YOURS HEART</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>YOURS HEART — Chrome Hearts</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', Arial, sans-serif;
+    :root{
+      --bg:#000;
+      --panel:#0f0f10;
+      --muted:#bdbdbd;
+      --accent1:#cfcfd1; /* silver */
+      --glass: rgba(255,255,255,0.03);
+      --card-shadow: 0 12px 30px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.02);
+      --max-width:1100px;
     }
 
-    body {
-      background-color: #000;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      min-height: 100vh;
-      padding: 20px;
+    /* Reset */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:
+        radial-gradient(1200px 600px at 10% 10%, rgba(255,255,255,0.02), transparent 6%),
+        radial-gradient(800px 400px at 90% 90%, rgba(255,255,255,0.01), transparent 8%),
+        url('') center/cover no-repeat,
+        var(--bg);
+      color:#eee;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding:36px 20px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:28px;
     }
 
-    header {
-      margin-top: 40px;
+    /* subtle grain overlay */
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background-image:linear-gradient(transparent 50%, rgba(255,255,255,0.003) 50%);
+      background-size:100% 2px;
+      mix-blend-mode:overlay;
+      opacity:0.6;
     }
 
-    header img {
-      width: 260px;
-      height: auto;
-      max-width: 80vw;
+    .wrap{
+      width:100%;
+      max-width:var(--max-width);
+      margin:0 auto;
     }
 
-    .description {
-      margin: 30px auto;
-      max-width: 800px;
-      font-size: 16px;
-      line-height: 1.5;
-      color: #ccc;
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:10px 0;
+      position:relative;
     }
 
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-      width: 100%;
-      max-width: 1000px;
-      margin-top: 30px;
+    /* logo */
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      text-decoration:none;
+      color:var(--accent1);
+    }
+    .logo img{
+      width:110px;
+      height:auto;
+      display:block;
+      filter:drop-shadow(0 6px 14px rgba(255,255,255,0.04));
+      transform-origin:center;
+    }
+    .brand{
+      display:flex;
+      flex-direction:column;
+      line-height:1;
+      transform:translateY(-2px);
+    }
+    .brand .title{
+      font-family:'Playfair Display', serif;
+      font-weight:700;
+      letter-spacing:2px;
+      font-size:20px;
+      color:#fff;
+      text-shadow:0 2px 0 rgba(0,0,0,0.6);
+    }
+    .brand .sub{
+      font-size:11px;
+      color:var(--muted);
+      margin-top:4px;
     }
 
-    .product {
-      background-color: #111;
-      border: 1px solid #222;
-      border-radius: 12px;
-      padding: 20px;
-      transition: transform 0.3s, border-color 0.3s;
+    nav {
+      display:flex;
+      align-items:center;
+      gap:12px;
     }
 
-    .product:hover {
-      transform: translateY(-5px);
-      border-color: #555;
+    .btn-ghost{
+      color:var(--muted);
+      padding:8px 14px;
+      border-radius:10px;
+      font-size:14px;
+      text-decoration:none;
+      border:1px solid rgba(255,255,255,0.04);
+      transition:all .25s ease;
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+    }
+    .btn-ghost:hover{
+      color:#fff;
+      transform:translateY(-3px);
+      box-shadow:0 8px 28px rgba(0,0,0,0.6);
+      border-color:rgba(255,255,255,0.08);
     }
 
-    .product img {
-      width: 100%;
-      border-radius: 8px;
-      margin-bottom: 15px;
+    /* hero */
+    .hero{
+      text-align:center;
+      padding:30px 16px 10px;
+    }
+    .hero h1{
+      font-family:'Playfair Display', serif;
+      font-size:44px;
+      letter-spacing:3px;
+      color:#fff;
+      margin-bottom:12px;
+      text-shadow: 0 6px 30px rgba(0,0,0,0.6);
+    }
+    .hero p{
+      max-width:900px;
+      margin:0 auto;
+      color:var(--muted);
+      font-size:15px;
     }
 
-    .product h3 {
-      font-size: 18px;
-      margin-bottom: 8px;
-      color: #fff;
+    /* divider */
+    .divider{
+      height:1px;
+      width:86%;
+      max-width:900px;
+      margin:22px auto;
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
+      border-radius:6px;
     }
 
-    .product p {
-      font-size: 14px;
-      color: #bbb;
+    /* products grid */
+    .products{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:26px;
+      width:100%;
+      margin:10px 0 40px;
+      align-items:start;
+    }
+    @media (max-width:980px){
+      .products{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:640px){
+      .products{grid-template-columns:1fr}
     }
 
-    footer {
-      margin-top: 50px;
-      font-size: 14px;
-      color: #888;
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
+      border-radius:14px;
+      padding:18px;
+      border:1px solid rgba(255,255,255,0.04);
+      box-shadow:var(--card-shadow);
+      transition: transform .35s cubic-bezier(.2,.9,.2,1), box-shadow .35s;
+      transform-style:preserve-3d;
+      perspective:1200px;
+      overflow:hidden;
+      min-height:320px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-start;
     }
 
-    footer a {
-      color: #ccc;
-      text-decoration: none;
-      border-bottom: 1px solid #333;
+    /* reveal helper */
+    .reveal{
+      opacity:0;
+      transform:translateY(18px);
+      transition:opacity .7s ease, transform .7s cubic-bezier(.22,.9,.3,1);
+      will-change:opacity,transform;
+    }
+    .reveal.show{
+      opacity:1;
+      transform:none;
     }
 
-    footer a:hover {
-      color: #fff;
-      border-color: #fff;
+    .card-media{
+      width:100%;
+      height:220px;
+      border-radius:10px;
+      overflow:hidden;
+      background:linear-gradient(180deg, #0b0b0b, #1a1a1a);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-bottom:16px;
+      position:relative;
+    }
+    .card-media img{
+      max-width:92%;
+      max-height:92%;
+      object-fit:contain;
+      transition:transform .6s cubic-bezier(.2,.9,.2,1);
+      filter:drop-shadow(0 18px 28px rgba(0,0,0,0.6));
+    }
+    .card:hover .card-media img{
+      transform:scale(1.04) rotateZ(-1deg);
     }
 
-    @media (max-width: 600px) {
-      .description {
-        font-size: 14px;
-      }
-      .product h3 {
-        font-size: 16px;
-      }
+    .card h3{
+      font-size:18px;
+      color:#fff;
+      margin-bottom:8px;
+      font-weight:600;
+      font-family:'Playfair Display', serif;
+    }
+    .card p{
+      color:var(--muted);
+      font-size:13.5px;
+      margin-bottom:14px;
+    }
+
+    .card .meta{
+      margin-top:auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .tag{
+      background:linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      padding:6px 10px;
+      border-radius:8px;
+      font-size:12px;
+      color:var(--muted);
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    .cta{
+      background:linear-gradient(90deg, #d9d9db, #bdbdbc);
+      color:#0a0a0a;
+      padding:8px 12px;
+      border-radius:10px;
+      font-weight:600;
+      text-decoration:none;
+      font-size:13px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.45);
+      transition:transform .18s ease;
+    }
+    .cta:active{transform:translateY(1px)}
+    .cta:hover{transform:translateY(-3px)}
+
+    /* tiny silver line under hero */
+    .hero-orn{
+      width:36px;height:6px;border-radius:6px;margin:18px auto 0;
+      background: linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0.12), rgba(255,255,255,0.04));
+      box-shadow:0 6px 18px rgba(0,0,0,0.6);
+    }
+
+    footer{
+      width:100%;
+      max-width:var(--max-width);
+      text-align:center;
+      color:var(--muted);
+      border-top:1px solid rgba(255,255,255,0.02);
+      padding:22px 0 40px;
+      font-size:13px;
+    }
+    footer a{color:var(--muted); text-decoration:none; border-bottom:1px dashed rgba(255,255,255,0.03); padding-bottom:1px}
+    footer a:hover{color:#fff}
+
+    /* hover 3d tilt */
+    .card.tilt{
+      transform:translateY(-6px) perspective(1000px) rotateX(var(--rx)) rotateY(var(--ry));
+      box-shadow:0 28px 60px rgba(0,0,0,0.7);
+    }
+
+    /* small screens tweaks */
+    @media (max-width:460px){
+      .hero h1{font-size:32px}
+      .brand .title{font-size:18px}
+      header{gap:8px}
+      .logo img{width:92px}
+      .card{min-height:280px}
+      .card-media{height:180px}
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="logo.png" alt="YOURS HEART логотип">
-  </header>
+  <div class="wrap">
 
-  <div class="description">
-    Простая возможность получить доступ к очкам и другим аксессуарам Chrome Hearts.  
-    <br><br>
-    <b>YOURS HEART</b> — это площадка, объединяющая эстетику и редкость. Здесь представлены разные предметы Chrome Hearts, прошедшие проверку и сохранённые в идеальном состоянии не отличимом от дорогих моделей.  
-    Наша миссия — сделать культовый дизайн ближе тем, кто ценит индивидуальность, качество и своё время.
+    <header>
+      <a class="logo" href="#">
+        <img src="logo.png" alt="Yours Heart logo" />
+        <div class="brand">
+          <div class="title">YOURS HEART</div>
+          <div class="sub">Chrome Hearts inspired — curated pieces</div>
+        </div>
+      </a>
+
+      <nav>
+        <a class="btn-ghost" href="#catalog">Каталог</a>
+        <a class="btn-ghost" href="#about">О нас</a>
+        <a class="btn-ghost" href="https://t.me/YOURS_HEART_SHOP" target="_blank">Telegram</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <h1>Простая возможность получить доступ к очкам и аксессуарам Chrome Hearts</h1>
+        <p>YOURS HEART — площадка, объединяющая эстетику и редкость. Мы тщательно проверяем каждую вещь и подбираем коллекции, чтобы сохранить эстетику культового дизайна и сделать её доступной.</p>
+        <div class="hero-orn" aria-hidden="true"></div>
+      </section>
+
+      <div class="divider" role="presentation"></div>
+
+      <section id="catalog" class="products" aria-label="Каталог товаров">
+        <!-- CARD 1 -->
+        <article class="card reveal" data-reveal>
+          <div class="card-media">
+            <img src="titanium.png" alt="Chrome Hearts Eyewear 1">
+          </div>
+          <h3>Chrome Hearts Eyewear 1</h3>
+          <p>Классическая модель с фирменным крестом и оправой из титана — лёгкая, прочная и стильная.</p>
+
+          <div class="meta">
+            <div class="tag">Классика</div>
+            <a class="cta" href="https://t.me/YOURS_HEART_SHOP" target="_blank">Связаться</a>
+          </div>
+        </article>
+
+        <!-- CARD 2 -->
+        <article class="card reveal" data-reveal>
+          <div class="card-media">
+            <img src="second.png" alt="Chrome Hearts Eyewear 2">
+          </div>
+          <h3>Chrome Hearts Eyewear 2</h3>
+          <p>Редкий вариант с гравировкой и ручной отделкой серебром — уникальная отделка и внимание к деталям.</p>
+
+          <div class="meta">
+            <div class="tag">Раритет</div>
+            <a class="cta" href="https://t.me/YOURS_HEART_SHOP" target="_blank">Узнать цену</a>
+          </div>
+        </article>
+
+        <!-- CARD 3 -->
+        <article class="card reveal" data-reveal>
+          <div class="card-media">
+            <img src="poveska.png" alt="Chrome Hearts Accessory">
+          </div>
+          <h3>Chrome Hearts Accessory</h3>
+          <p>Эксклюзивная подвеска в оригинальном стиле Chrome Hearts — серьёзный акцент в образе.</p>
+
+          <div class="meta">
+            <div class="tag">Аксессуар</div>
+            <a class="cta" href="https://t.me/YOURS_HEART_SHOP" target="_blank">Купить</a>
+          </div>
+        </article>
+      </section>
+
+      <section id="about" style="max-width:900px;margin:0 auto 30px;color:var(--muted);text-align:center;padding:0 12px;">
+        <p><strong>YOURS HEART</strong> — площадка, где качество и дизайн встречаются. Мы проверяем подлинность и состояние, фотографируем и описываем все детали — чтобы клиент получал товар, как с витрины.</p>
+      </section>
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> YOURS HEART. Все права защищены.</div>
+      <div style="margin-top:8px"><a href="https://t.me/YOURS_HEART_SHOP" target="_blank">Telegram — YOURS_HEART_SHOP</a></div>
+    </footer>
+
   </div>
 
-  <section class="products">
-    <div class="product">
-      <img src="titanium.png">
-      <h3>Chrome Hearts Eyewear 1</h3>
-      <p>Классическая модель с фирменным крестом и оправой из титана.</p>
-    </div>
+  <script>
+    // set year
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-    <div class="product">
-      <img src="second.png">
-      <h3>Chrome Hearts Eyewear 2</h3>
-      <p>Редкий вариант с гравировкой и ручной отделкой серебром.</p>
-    </div>
+    // Reveal on scroll (IntersectionObserver)
+    (function(){
+      const obs = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            entry.target.classList.add('show');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, {threshold: 0.14});
 
-    <div class="product">
-      <img src="poveska.png">
-      <h3>Chrome Hearts Accessory</h3>
-      <p>Эксклюзивная подвеска в оригинальном стиле Chrome Hearts.</p>
-    </div>
-  </section>
+      document.querySelectorAll('[data-reveal]').forEach(el=>{
+        obs.observe(el);
+      });
+    })();
 
-  <footer>
-    <br>
-    <a href="https://t.me/YOURS_HEART_SHOP" target="_blank">Telegram</a>
-    <br><br>
-    © 2026 YOURS HEART. Все права защищены.
-  </footer>
+    // Card tilt effect
+    (function(){
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card=>{
+        let rect = null;
+        function onMove(e){
+          if(!rect) rect = card.getBoundingClientRect();
+          const x = ( (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left );
+          const y = ( (e.clientY || (e.touches && e.touches[0].clientY)) - rect.top );
+          const cx = rect.width/2, cy = rect.height/2;
+          const dx = (x - cx) / cx; // -1 .. 1
+          const dy = (y - cy) / cy; // -1 .. 1
+          const rx = (-dy * 6).toFixed(2) + 'deg';
+          const ry = (dx * 8).toFixed(2) + 'deg';
+          card.style.setProperty('--rx', rx);
+          card.style.setProperty('--ry', ry);
+          card.classList.add('tilt');
+        }
+        function onLeave(){
+          card.classList.remove('tilt');
+          card.style.setProperty('--rx','0deg');
+          card.style.setProperty('--ry','0deg');
+          rect = null;
+        }
+        card.addEventListener('mousemove', onMove);
+        card.addEventListener('touchmove', onMove);
+        card.addEventListener('mouseleave', onLeave);
+        card.addEventListener('touchend', onLeave);
+        card.addEventListener('touchcancel', onLeave);
+      });
+    })();
+
+    // Simple progressive enhancement: if images missing, show placeholders
+    (function(){
+      document.querySelectorAll('img').forEach(img=>{
+        img.addEventListener('error', ()=>{
+          img.style.opacity = '0.03';
+          img.parentElement.style.background = 'linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01))';
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
